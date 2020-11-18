@@ -1,0 +1,18 @@
+{
+  "name": "slackbot-thing",
+  "version": "1.0.0",
+  "description": "Slackbot ",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "start": "node index.js"
+  },
+  "author": "jared krause",
+  "license": "ISC",
+  "dependencies": {
+    "@slack/events-api": "^2.3.4",
+    "@slack/web-api": "^5.13.0",
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {}
+}
