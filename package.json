@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "start": "node index.js"
-  },
+    "build": "babel src -d dist",
+    "start": "npm run build && nodemon dist/index.js",
+    "prod-serve": "node dist/index.js"
+ },
   "author": "jared krause",
   "license": "ISC",
   "dependencies": {
@@ -14,5 +16,13 @@
     "@slack/web-api": "^5.13.0",
     "dotenv": "^8.2.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/node": "^7.12.6",
+    "@babel/plugin-transform-runtime": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "babel-preset-env": "^1.7.0",
+    "nodemon": "^2.0.6"
+  }
 }

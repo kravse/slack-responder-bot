@@ -1,3 +1,5 @@
+// path = require('path');
+// root = path.resolve(__dirname)
 require('dotenv').config()
 const { WebClient } = require('@slack/web-api');
 const { createEventAdapter } = require('@slack/events-api');
@@ -10,7 +12,7 @@ const questions = [
   "How was your meeting?",
   "What did you learn?",
   "Did anything stand out to you as surprising?",
-  "How do you feel after your meeting?",
+  "How do you feel after your meetingg?",
 ];
 
 const followups = [
@@ -31,21 +33,21 @@ let introduced = false;
 async function respond (event) {
   try {
     // Use the `chat.postMessage` method to send a message from this app
-    let msg = "Hi, I'm RubberDuck! I'll ask you questions about your day. Get started by typing `ask`.";
-    if (event.text.toLowerCase() === "ask" || introduced) {
-      if (status === 'question') {
-        if (currentQuestion > questions.length) {
-          msg = "Wow, sounds like you had a great day!"
-        } else {
-          msg = questions[currentQuestion];
-          currentQuestion++;
-        }
-      } else {
-        msg = followups[Math.floor(Math.random() * questions.length)];
-      }
-      status = status === 'question' ? 'followup' : 'question';
-    }
-    introduced = true;
+    // let msg = "Hi, I'm RubberDuck! I'll ask you questions about your day. Get started by typing `ask`.";
+    // if (event.text.toLowerCase() === "ask" || introduced) {
+    //   if (status === 'question') {
+    //     if (currentQuestion > questions.length) {
+    //       msg = "Wow, sounds like you had a great day!"
+    //     } else {
+    //       msg = questions[currentQuestion];
+    //       currentQuestion++;
+    //     }
+    //   } else {
+    //     msg = followups[Math.floor(Math.random() * questions.length)];
+    //   }
+    //   status = status === 'question' ? 'followup' : 'question';
+    // }
+    // introduced = true;
     await web.chat.postMessage({
       channel: event.user,
       text: msg
