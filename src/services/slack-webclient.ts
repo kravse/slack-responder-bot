@@ -1,14 +1,19 @@
 const { WebClient } = require('@slack/web-api');
-const web = new WebClient(process.env.SLACK_TOKEN);
 
-interface webService {
-  respond(event)
+interface SlackWebService {
+  init();
+  respond(event, msg:string)
 }
-class webServiceImpl implements webService {
-  public async respond(event) {
+class SlackWebServiceImpl implements SlackWebService {
+  private web;
+
+  public init() {
+    this.web = new WebClient(process.env.SLACK_TOKEN);
+  }
+
+  public async respond(event, msg:string) {
     try {
       // Use the `chat.postMessage` method to send a message from this app
-      let msg = "Oh hai! I'm RubberDuck!";
       // if (event.text.toLowerCase() === "ask" || introduced) {
       //   if (status === 'question') {
       //     if (currentQuestion > questions.length) {
@@ -23,7 +28,7 @@ class webServiceImpl implements webService {
       //   status = status === 'question' ? 'followup' : 'question';
       // }
       // introduced = true;
-      await web.chat.postMessage({
+      await this.web.chat.postMessage({
         channel: event.user,
         text: msg
       });
@@ -33,5 +38,5 @@ class webServiceImpl implements webService {
   }
 }
 
-let Webclient = new webServiceImpl()
-export { Webclient };
+let SlackWebClient = new SlackWebServiceImpl()
+export { SlackWebClient };

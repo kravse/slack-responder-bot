@@ -1,11 +1,11 @@
 const { createEventAdapter } = require('@slack/events-api');
 
-interface eventService {
+interface SlackEventService {
   init():void
-  startListener(type:string, callback)
+  slackEventsListener(type:string, callback)
 }
 
-class EventsImpl implements eventService{
+class SlackEventsImpl implements SlackEventService{
   private slackEvents = createEventAdapter(process.env.SLACK_SIGNING_SECRET);
   private port = process.env.PORT || 3000;
   static slackEvents: any;
@@ -15,13 +15,12 @@ class EventsImpl implements eventService{
     console.log(`Listening for events on ${server.address().port}`);
   }
 
-  public startListener(type, callback) {
+  public slackEventsListener(type, callback) {
     this.slackEvents.on(type, (event: any) => {
       return callback(event)
     });
   }
 }
 
-let Events = new EventsImpl()
-Events.init();
-export {Events};
+let SlackEvents = new SlackEventsImpl()
+export { SlackEvents} ;
