@@ -8,7 +8,7 @@ class webServiceImpl implements webService {
   public async respond(event) {
     try {
       // Use the `chat.postMessage` method to send a message from this app
-      let msg = "Hi, I'm RubberDuck! I'll ask you questions about your day. Get started by typing `ask`.";
+      let msg = "Oh hai! I'm RubberDuck!";
       // if (event.text.toLowerCase() === "ask" || introduced) {
       //   if (status === 'question') {
       //     if (currentQuestion > questions.length) {
@@ -30,10 +30,8 @@ class webServiceImpl implements webService {
     } catch (error) {
       console.log(error);
     }
-
   }
 }
 
-
-let webclient = new webServiceImpl()
-export { webclient };
+let Webclient = new webServiceImpl()
+export { Webclient };
