@@ -1,7 +1,7 @@
 require('dotenv').config();
-import { SlackEvents } from './services/slack-events';
-import { SlackWebClient } from './services/slack-webclient';
-import { Messages } from './services/message-service';
+import { SlackEvents } from '@/services/slack-events';
+import { SlackWebClient } from '@/services/slack-webclient';
+import { Messages } from '@/services/message-service';
 
 let init = async () => {
   SlackEvents.init();

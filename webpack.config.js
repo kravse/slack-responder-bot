@@ -2,10 +2,6 @@
 
 const NodemonPlugin = require('nodemon-webpack-plugin');
 const path = require('path')
-function resolve(dir) {
-  return path.join(__dirname, '..', dir)
-}
-
 module.exports = (env = {}) => {
 
   const config = {
@@ -15,7 +11,10 @@ module.exports = (env = {}) => {
     devtool: env.development ? 'cheap-eval-source-map' : false,
     resolve: {
       extensions: ['.ts', '.js'], // We need to watch '.ts' files as well as '.js' files
-      modules: ['node_modules', 'src', 'package.json']
+      modules: ['node_modules', 'src', 'package.json'],
+      alias: {
+        '@': path.join(__dirname, 'src')
+      }
     },
     module: {
       rules: [
