@@ -1,12 +1,11 @@
 interface UsersService {
   getOrSetUser(userID);
-  setUser(user);
   updateUser(user, config)
 }
-function User(userObj, greetingDate?:Number) {
+
+function User(userObj) {
   this.user = userObj.user;
   this.channel = userObj.channel,
-  this.greetingDate = greetingDate || null;
   this.lastInteraction = new Date().getTime();
 }
 
@@ -16,19 +15,21 @@ class UsersServiceImpl implements UsersService {
   public getOrSetUser(user) {
     console.info(this.activeUsers)
     if (!this.activeUsers.has(user.user)) {
-      this.setUser(user)
+      this.activeUsers.set(user.user, new User(user))
     }
     return this.activeUsers.get(user.user)
   }
-  public setUser(user) {
-    this.activeUsers.set(user.user, new User(user))
-    console.info(this.activeUsers);
-  };
   public updateUser(user, config) {
     if (!this.activeUsers.has(user.user)) return;
+    let now = new Date().getTime();
     if (config.greeting) {
-      this.activeUsers.set(user.user, new User(user, new Date().getTime()))
+      user.greetingDate = now;
+      user.lastInteraction = now;
     }
+    if (config.debrief) {
+      user.debrief = config.debrief
+    }
+    this.activeUsers.set(user.user, user)
     console.info('updateuser', this.activeUsers)
   }
 }
