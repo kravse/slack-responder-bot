@@ -1,5 +1,7 @@
 # responder-bot
-Responder bot Slack app.
+Responder bot Slack app built with Node, Webpack and TypeScript.
+
+Uses Slack's Event and Web APIs to respond to user questions. 
 
 Get Started:
 
