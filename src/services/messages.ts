@@ -4,10 +4,10 @@ interface MessageService {
   generateResponse(event): String;
 }
 const debriefs = [
-  "Tell me something about your day?",
-  "What did you learn today?",
-  "Did anything stand out to you as surprising today?",
-  "How do you feel today?"
+  "Hey What's Up?",
+  "Hows it Hangin?",
+  "What's your favourite Dinosaur?",
+  "Do you like Radiohead?"
 ]
 class MessageServiceImpl implements MessageService {
   private responses(response, user?) {
@@ -15,8 +15,7 @@ class MessageServiceImpl implements MessageService {
     let mentionUser = `<@${user.user}>`;
     switch(response) {
       case 'intro':
-        resp = "Hi, " + mentionUser + ", I'm Ducky! I'm here to help you reflect on some of "+
-        "your work experiences. But first, a bit of housekeeping. Here are "+
+        resp = "Hi, " + mentionUser + ", I'm Responder Bot! Lets Chat. Here are "+
         "some commands you can type to interact with me.\n\n `_chat` " +
         "I'll ask you some questions. \n`_stop` I'll stop talking for the day! " +
         "No questions asked :).";

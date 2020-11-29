@@ -1,9 +1,9 @@
 {
-  "name": "slack-app-webpack",
+  "name": "responder-bot",
   "version": "1.0.0",
   "author": "Jared Krause",
-  "homepage": "https://www.twitter.com/@kravse",
-  "description": "",
+  "homepage": "https://kravse.dev",
+  "description": "An experimental bot that responds to messages on slack.",
   "scripts": {
     "start": "webpack --progress --env development --env nodemon",
     "start:prod": "webpack --progress --env nodemon",
